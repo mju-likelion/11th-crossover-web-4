@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
 import styled from 'styled-components';
-// import { useState } from 'react';
-const SignInputBasic = () => {
-  // const [test, setTest] = useState('');
 
+const SignInputBasic = () => {
   return (
     <>
       <SignInputContainer>
         <SignInputWrapper>
           <SignInputBox>
-            <SignInput></SignInput>
+            <SignInput placeholder="기본값"></SignInput>
             <SignIcon></SignIcon>
           </SignInputBox>
         </SignInputWrapper>
@@ -28,7 +25,7 @@ const SignInputContainer = styled.div`
 const SignInputWrapper = styled.div`
   width: 540px;
   height: 90px;
-  border: 2px solid #000000;
+  border: 2px solid #717171;
   background-color: #ffffff;
   padding: 29px 28.5px;
   margin-bottom: 10px;
@@ -52,6 +49,7 @@ const SignIcon = styled.div`
   width: 32px;
   height: 32px;
 `;
+
 const HelperText = styled.div`
   width: 495px;
   height: 19px;
