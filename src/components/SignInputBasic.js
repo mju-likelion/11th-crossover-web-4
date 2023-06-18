@@ -3,26 +3,26 @@ import styled from 'styled-components';
 const SignInputBasic = () => {
   return (
     <>
-      <SignInputContainer>
-        <SignInputWrapper>
-          <SignInputBox>
-            <SignInput placeholder="기본값"></SignInput>
-            <SignIcon></SignIcon>
-          </SignInputBox>
-        </SignInputWrapper>
+      <AllContainer>
+        <BoxWrapper>
+          <InputBox>
+            <SignInput placeholder="기본값" />
+            <SignIcon />
+          </InputBox>
+        </BoxWrapper>
         <HelperText>helper text</HelperText>
-      </SignInputContainer>
+      </AllContainer>
     </>
   );
 };
-const SignInputContainer = styled.div`
+const AllContainer = styled.div`
   width: 540px;
   height: 124px;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
-const SignInputWrapper = styled.div`
+const BoxWrapper = styled.div`
   width: 540px;
   height: 90px;
   border: 2px solid #717171;
@@ -31,7 +31,7 @@ const SignInputWrapper = styled.div`
   margin-bottom: 10px;
   border-radius: 25px;
 `;
-const SignInputBox = styled.div`
+const InputBox = styled.div`
   width: 483px;
   height: 32px;
   display: flex;
