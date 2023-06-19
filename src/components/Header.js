@@ -40,5 +40,5 @@ const AirplanIcon = styled.img`
 const LogoutIcon = styled.img`
   width: 29px;
   height: 29px;
-  margin: 44px 0 43px 993px;
+  margin: 44px 363px 43px auto;
 `
