@@ -1,21 +1,36 @@
 import React from 'react';
 import styled from "styled-components";
+import SignInputBasic from "../../components/SignInputBasic";
+import NextButton from "../../components/NextButton";
 
 const Login = () => {
   return (
     <>
-      <LoginBox>
+      <LoginContainer>
         <LoginTitle>로그인</LoginTitle>
-      </LoginBox>
+        <IDBox>
+          <SignInputBasic/>
+        </IDBox>
+        <PWBox>
+          <SignInputBasic/>
+        </PWBox>
+        <Button>
+          <NextButton>로그인</NextButton>
+        </Button>
+      </LoginContainer>
+
+
     </>
   );
 };
 
 export default Login;
 
-const LoginBox = styled.div`
+const LoginContainer = styled.div`
   display: flex;
-  justify-content: center;
+  //justify-content: center;
+  flex-direction: column;
+  align-items: center;
   width: 100%;
   height: 100%;
   background-color: pink;
@@ -26,4 +41,19 @@ const LoginTitle = styled.h3`
   font-weight: 600;
   color: black;
   margin-top: 145px;
+`
+
+const IDBox = styled.div`
+  background-color: antiquewhite;
+  margin-top: 65px;
+`
+
+const PWBox = styled.div`
+  background-color: aquamarine;
+  margin-top: 21px;
+`
+
+const Button = styled.div`
+  background-color: mediumpurple;
+  margin-top: 61px;
 `
