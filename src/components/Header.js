@@ -1,15 +1,16 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
 import Airplane from "../assets/images/airplaneicon.svg";
 import Logout from "../assets/images/logout icon.svg";
 
 const Header = () => {
+  const [isLogin, setIsLogin] = useState(false);
   return (
     <>
       <HeaderBar>
         <Title>비행기레터</Title>
-        <AirplanIcon src={Airplane} />
-        <LogoutIcon src={Logout} />
+        <AirplanIcon src={Airplane}/>
+        {isLogin && <LogoutIcon src={Logout}/>}
       </HeaderBar>
     </>
   );
