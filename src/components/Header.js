@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
-import Airplane from "../assets/images/airplaneicon.svg";
+import Airplane from "../assets/images/airplaneIcon.svg";
 import Logout from "../assets/images/logout icon.svg";
 
 const Header = () => {
@@ -8,9 +8,8 @@ const Header = () => {
   return (
     <>
       <HeaderBar>
-        <Title>비행기레터</Title>
-        <AirplanIcon src={Airplane}/>
-        {isLogin && <LogoutIcon src={Logout}/>}
+        <Logo src={Airplane} alt="logo" />
+        {isLogin && <LogoutIcon src={Logout} alt="logout"/>}
       </HeaderBar>
     </>
   );
@@ -25,16 +24,10 @@ const HeaderBar = styled.div`
   border-bottom: 1px solid ${({theme}) => theme.colors.GRAY};
 `
 
-const Title = styled.div`
-  font-size: 28px;
-  font-weight: 600;
-  line-height: 38px;
-  color: ${({theme}) => theme.colors.BLUE2};
-  margin: 36px 0 42px 363px;
-`
-
-const AirplanIcon = styled.img`
-  margin: 42px 0 43px 10px;
+const Logo = styled.img`
+  width: 174px;
+  height: 34px;
+  margin: 42px 0 43px 363px;
 `
 
 const LogoutIcon = styled.img`
