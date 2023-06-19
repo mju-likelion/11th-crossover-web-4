@@ -1,13 +1,15 @@
 import React from 'react';
 import styled from "styled-components";
-import {ReactComponent as Airplane} from "../assets/images/airplaneicon.svg";
+import Airplane from "../assets/images/airplaneicon.svg";
+import Logout from "../assets/images/logout icon.svg";
 
 const Header = () => {
   return (
     <>
       <HeaderBar>
         <Title>비행기레터</Title>
-        <AirplanIcon><Airplane /></AirplanIcon>
+        <AirplanIcon src={Airplane} />
+        <LogoutIcon src={Logout} />
       </HeaderBar>
     </>
   );
@@ -30,8 +32,12 @@ const Title = styled.div`
   margin: 36px 0 42px 363px;
 `
 
-const AirplanIcon = styled.div`
-  width: 31.94px;
-  height: 31.44px;
-  margin: 41.48px 0 43.08px 9.73px;
+const AirplanIcon = styled.img`
+  margin: 42px 0 43px 10px;
+`
+
+const LogoutIcon = styled.img`
+  width: 29px;
+  height: 29px;
+  margin: 44px 0 43px 993px;
 `
