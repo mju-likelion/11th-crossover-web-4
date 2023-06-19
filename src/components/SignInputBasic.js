@@ -25,9 +25,9 @@ const AllContainer = styled.div`
 const BoxWrapper = styled.div`
   width: 540px;
   height: 90px;
-  border: 2px solid #717171;
+  border: 2px solid ${(props) => props.theme.colors.GRAY};
   background-color: #ffffff;
-  padding: 29px 28.5px;
+  padding: 29px 31px;
   margin-bottom: 10px;
   border-radius: 25px;
 `;
