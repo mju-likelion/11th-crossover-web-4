@@ -1,10 +1,15 @@
 import styled from 'styled-components';
 import { data } from '../assets/data/AgreeTerms';
+import SignInputBasic from './SignInputBasic';
+import NextButton from './NextButton';
 const SignUp = () => {
   return (
     <AllContainer>
       <InputContainer>
         <Title>회원가입</Title>
+        <SignInputBasic></SignInputBasic>
+        <SignInputBasic></SignInputBasic>
+        <SignInputBasic></SignInputBasic>
       </InputContainer>
       <AgreeContainer>
         <AgreeTop>
@@ -20,6 +25,7 @@ const SignUp = () => {
           <AgreeContent>{data}</AgreeContent>
         </AgreeContentWrapper>
       </AgreeContainer>
+      <NextButton>완료하기</NextButton>
     </AllContainer>
   );
 };
@@ -32,6 +38,7 @@ const AllContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding-top: 134px;
 `;
 
 const InputContainer = styled.div`
@@ -46,6 +53,7 @@ const Title = styled.div`
   height: 74px;
   font-size: 54px;
   font-weight: 600;
+  margin-bottom: 65px;
 `;
 const AgreeContainer = styled.div`
   width: 1166px;
@@ -54,6 +62,7 @@ const AgreeContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 115px;
 `;
 const AgreeTop = styled.div`
   width: 100%;
