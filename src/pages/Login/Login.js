@@ -15,7 +15,7 @@ const Login = () => {
           <SignInputBasic/>
         </PWBox>
         <Button>
-          <NextButton>로그인</NextButton>
+          <NextButton isfull="false">로그인</NextButton>
         </Button>
       </LoginContainer>
 
@@ -28,7 +28,6 @@ export default Login;
 
 const LoginContainer = styled.div`
   display: flex;
-  //justify-content: center;
   flex-direction: column;
   align-items: center;
   width: 100%;
