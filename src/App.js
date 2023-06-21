@@ -5,7 +5,6 @@ import { Theme } from './styles/Theme.js';
 import NextButton from "./components/NextButton";
 import ContentButton from "./components/ContentButton";
 import Header from "./components/Header";
-
 function App() {
   return (
     <ThemeProvider theme={Theme}>
