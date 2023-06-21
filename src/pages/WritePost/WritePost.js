@@ -11,31 +11,33 @@ const WritePost = () => {
   const onSubmit = (data) => {
     console.log(data);
   };
+  const MAX_TITLE_LENGTH = 20;
+  const MAX_CONTENT_LENGTH = 140;
 
   return (
     <>
       <WritePostContainer>
         <TextBox>
-          <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={() => handleSubmit(onSubmit)}>
             <TitleBox>
               <TitlePart>
-                <Title>제목: </Title>
+                <Title>제목 : </Title>
                 <TitleInput
-                id='title'
-                type='text'
-                maxLength={20}
-                {...register('title')}
-                onChange={(e) => setTitleCount((e.target.value))} />
+                  id='title'
+                  type='text'
+                  maxLength={MAX_TITLE_LENGTH}
+                  {...register('title')}
+                  onChange={(e) => setTitleCount((e.target.value))} />
               </TitlePart>
               <TitleLength>( {titleCount.length} / 20 )</TitleLength>
             </TitleBox>
             <ContentBox>
               <ContentInput
-              id='content'
-              type='text'
-              maxLength={140}
-              {...register('content')}
-              onChange={(e) => setContentCount((e.target.value))} />
+                id='content'
+                type='text'
+                maxLength={MAX_CONTENT_LENGTH}
+                {...register('content')}
+                onChange={(e) => setContentCount((e.target.value))} />
               <ContentLength>( {contentCount.length} / 140 )</ContentLength>
             </ContentBox>
             <BottomBox>
@@ -84,7 +86,6 @@ const TitlePart = styled.div`
 `
 
 const Title = styled.h3`
-  width: 60px; // 어림잡음 이거 어떻게 하기
   height: 24px;
   font-weight: 600;
   font-size: 24px;
@@ -93,16 +94,16 @@ const Title = styled.h3`
 
 const TitleInput = styled.input`
   border: none;
-  width: 553px; //Title width랑 합쳐서 613px
   height: 24px;
   font-size: 24px;
   font-weight: 600;
-  line-height: 24px; // 왜 변화가없지?
+  line-height: 24px;
   padding-right: 19px;
 `
 
 const TitleLength = styled.div`
   float: right; // 오른쪽에 정렬
+  // float 속성 대체해야함
   color: ${({theme}) => theme.colors.GRAY};
   font-weight: 500;
   font-size: 20px;
@@ -119,9 +120,6 @@ const ContentBox = styled.div`
   margin-top: 16px;
   padding: 35px;
   color: ${({theme}) => theme.colors.GRAY};
-`
-const ContentPart = styled.div`
-  display: flex;
 `
 
 const ContentInput = styled.textarea`
