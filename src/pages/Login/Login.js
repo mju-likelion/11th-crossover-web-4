@@ -8,24 +8,6 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {validation} from "../Join/Validation";
 
 const Login = () => {
-  // const [isActive, setIsActive] = useState(false);
-  // const [id, setId] = useState("");
-  // const [pw, setPw] = useState("");
-  const { formState: { errors} } = useForm( {
-    resolver: yupResolver(validation), mode: 'onChange'});
-  // const changeId = (e) => {
-  //   setId(e.target.value);
-  // };
-  // const changePw = (e) => {s
-  //   setPw(e.target.value);
-  // };
-  // useEffect(() => {
-  //   console.log(id);
-  // }, [id]);
-  // useEffect(() => {
-  //   console.log(pw);
-  // }, [pw]);
-
   return (
     <>
       <LoginContainer>
@@ -35,7 +17,6 @@ const Login = () => {
             placeholder='아이디'
             name='id'
             helperText='영문과 숫자를 조합하여 5~10글자 미만으로 입력하여 주세요.'
-            // onChange={changeId}
           />
         </IDBox>
         <PWBox>
@@ -43,11 +24,9 @@ const Login = () => {
             placeholder='비밀번호'
             name='password'
             helperText='영문과 숫자, 특수기호를 조합하여 8~14 글자 미만으로 입력하여 주세요.'
-            // onChange={changePw}
           />
         </PWBox>
         <NextButton
-          // isfull={errors.id && errors.password ? false: true}
         >로그인</NextButton>
       </LoginContainer>
       <SignUp>회원가입</SignUp>
