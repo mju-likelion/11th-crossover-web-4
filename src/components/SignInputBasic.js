@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { validation } from './Validation';
+import { validation } from '../pages/Join/Validation';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import cancelIcon from '../assets/images/cancelicon.svg';
@@ -38,34 +38,33 @@ const SignInputBasic = ({ name, placeholder, helperText }) => {
               name={name}
               {...register(name)}
             />
-            {inputValue[name] && !errors[name] ? (
+
+            {inputValue[name] && !errors[name] && (
               <IsSuccessIcon src={successIcon} alt="successIcon" />
-            ) : errors[name] ? (
-              <IsSuccessIcon src={errorIcon} alt="errorIcon" />
-            ) : null}
-            {/* 값이 없으면 아이콘 null, 값이 생기고 에러 없으면 성공 / 유효성 에러면 에러 아이콘 생성 */}
+            )}
+            {errors[name] && <IsSuccessIcon src={errorIcon} alt="errorIcon" />}
+            {/* 중첩 삼항 연산자에서 변경! */}
 
             {inputValue[name] ? (
               <CancelIcon
                 src={cancelIcon}
                 alt="cancelIcon"
                 onClick={() => {
-                  setValue(name, '');
+                  setValue(name, ''); //어떤 값을, 뭐로 변경시킬지
                   errors[name] = '';
                 }}
-              ></CancelIcon>
+              />
             ) : (
               ''
             )}
           </InputBox>
         </BoxWrapper>
-        {errors[name] ? (
-          <HelperText>{errors[name].message}</HelperText>
-        ) : inputValue[name] ? (
-          ''
-        ) : (
+        {errors[name] && <HelperText>{errors[name].message}</HelperText>}
+        {!errors[name] && inputValue[name] && ''}
+        {!errors[name] && !inputValue[name] && (
           <HelperText>{helperText}</HelperText>
         )}
+        {/* 중첩 삼항 연산자에서 변경 */}
       </AllContainer>
     </>
   );
