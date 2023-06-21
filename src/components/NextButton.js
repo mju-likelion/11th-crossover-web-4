@@ -2,10 +2,10 @@ import React from 'react';
 import styled from "styled-components";
 import {Theme} from "../styles/Theme"; //?
 
-const NextButton = ({children, isFull}) => {
+const NextButton = ({children, isfull}) => {
   return (
     <>
-      <Button isfull={isFull}>{children}</Button>
+      <Button isfull={isfull}>{children}</Button>
     </>
   );
 };
