@@ -7,13 +7,11 @@ const PostList = () => {
     <AllContainer>
       <PostContainer>
         <WriteButtonWrapper>
-          <ContentButton children="작성하기" isActive="true" type="false" />
+          <ContentButton children="작성하기" isactive="true" type="false" />
         </WriteButtonWrapper>
-        <Post who="other" />
-        <Post who="me" />
-        <Post who="other" />
-        <Post who="other" />
-        <Post who="me" />
+        {['other', 'me', 'other', 'other', 'me'].map((item, index) => (
+          <Post userName={item} key={index} />
+        ))}
       </PostContainer>
     </AllContainer>
   );

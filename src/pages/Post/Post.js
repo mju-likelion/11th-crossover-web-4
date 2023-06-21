@@ -2,14 +2,14 @@ import MyProfile from '../../assets/images/profile.svg';
 import OtherProfile from '../../assets/images/profilenone.svg';
 import styled from 'styled-components';
 
-const Post = ({ who }) => {
-  const time = '18:30'; //서버에서 data 가져오면, 이 부분 삭제
+const Post = ({ userName }) => {
+  const TIME = '18:30'; //서버에서 data 가져오면, 이 부분 삭제
   return (
     <PostBox>
       <PostTop>
         <PostProfile>
-          {who === 'me' && <ProfileImg src={MyProfile} alt="MyProfile" />}
-          {who === 'other' && (
+          {userName === 'me' && <ProfileImg src={MyProfile} alt="MyProfile" />}
+          {userName === 'other' && (
             <ProfileImg src={OtherProfile} alt="OtherProfile" />
           )}
           {/* 또는 boolean값으로 삼항 연산자 사용 가능 (중첩 X) */}
@@ -23,7 +23,7 @@ const Post = ({ who }) => {
           </PostContent>
         </PostTopRight>
       </PostTop>
-      <PostTime>{time}</PostTime>
+      <PostTime>{TIME}</PostTime>
     </PostBox>
   );
 };
@@ -42,7 +42,6 @@ const PostTop = styled.div`
   width: 699px;
   height: 239px;
   display: flex;
-  flex-direction: row;
   margin-bottom: 10px;
 `;
 const PostProfile = styled.div`
@@ -71,11 +70,11 @@ const PostContent = styled.div`
   border-radius: 25px;
   border: 2px solid ${({ theme }) => theme.colors.BLUE1};
   padding: 20px 26px;
-  font-size: 20px;
 `;
 const ContentInner = styled.div`
   width: 100%;
   height: 100%;
+  font-size: 20px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap; // wrap안하고 '한 줄'로 표기
@@ -90,7 +89,6 @@ const PostTime = styled.div`
   font-weight: 500;
   color: ${({ theme }) => theme.colors.GRAY};
   display: flex;
-  flex-direction: row;
   justify-content: flex-end;
 `;
 export default Post;
