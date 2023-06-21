@@ -18,7 +18,7 @@ const WritePost = () => {
           <ContentBox>
             {/*<ContentPart>*/}
             <ContentInput/>
-            <ContentLength>( 9 / 140 )</ContentLength>
+            <ContentLength>( 0 / 140 )</ContentLength>
             {/*</ContentPart>*/}
           </ContentBox>
           <BottomBox>
@@ -35,6 +35,7 @@ const WritePost = () => {
 
 export default WritePost;
 
+// **주석 나중에 필요없는 거 지우기!**
 const WritePostContainer = styled.div`
   width: 100%;
   height: 100%;
@@ -45,7 +46,6 @@ const WritePostContainer = styled.div`
 const TextBox = styled.div`
   width: 794px;
   height: 1092px;
-  background-color: pink;
 `
 
 const TitleBox = styled.div`
@@ -57,19 +57,16 @@ const TitleBox = styled.div`
   border: 2px solid ${({theme}) => theme.colors.GRAY};
   margin-top: 58px;
   padding: 55px 0 55px 35px;
-  background-color: aquamarine;
 `
 
 const TitlePart = styled.div`
   display: flex;
-  //justify-content: center;
   width: 631px;
   height: 24px;
-  background-color: gray;
 `
 
 const Title = styled.h3`
-  width: 60px; // 어림잡음 이거 어떻게 하지
+  width: 60px; // 어림잡음 이거 어떻게 하기
   height: 24px;
   font-weight: 600;
   font-size: 24px;
@@ -77,8 +74,6 @@ const Title = styled.h3`
 `
 
 const TitleInput = styled.input`
-  background-color: mediumpurple;
-  //background-color: transparent;
   border: none;
   width: 553px; //Title width랑 합쳐서 613px
   height: 24px;
@@ -100,7 +95,6 @@ const TitleLength = styled.div`
 `
 
 const ContentBox = styled.div`
-  background-color: bisque;
   height: 733px;
   border-radius: 25px;
   border: 2px solid ${({theme}) => theme.colors.GRAY};
@@ -113,7 +107,6 @@ const ContentPart = styled.div`
 `
 
 const ContentInput = styled.textarea`
-  background-color: white;
   width: 714px;
   height: 627px;
   border: none;
@@ -137,11 +130,9 @@ const BottomBox = styled.div`
   height: 151px;
   padding: 16px 35px 16px 35px;
   margin-top: 16px;
-  background-color: blue;
 `
 
 const InfoBox = styled.div`
-  background-color: hotpink;
   width: 726px;
   color: ${({theme}) => theme.colors.GRAY};
   font-weight: 500;
