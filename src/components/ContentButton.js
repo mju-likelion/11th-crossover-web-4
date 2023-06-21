@@ -2,10 +2,10 @@ import React from 'react';
 import styled from "styled-components";
 import {Theme} from "../styles/Theme";
 
-const ContentButton = ({children, isActive, type}) => {
+const ContentButton = ({children, isactive, type}) => {
   return (
     <>
-      <Button type={type} isactive={isActive}>{children}</Button>
+      <Button type={type} isactive={isactive}>{children}</Button>
     </>
   );
 };
