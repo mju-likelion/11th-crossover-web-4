@@ -2,10 +2,10 @@ import React from 'react';
 import styled from "styled-components";
 // import {Theme} from "../styles/Theme";
 
-const ContentButton = ({children, isActive, isWritten}) => {
+const ContentButton = ({children, isActive, type}) => {
   return (
     <>
-      <Button isactive={isActive} iswritten={isWritten}>{children}</Button>
+      <Button type={type} isactive={isActive}>{children}</Button>
     </>
   );
 };
@@ -19,5 +19,5 @@ const Button = styled.button`
   color: white;
   font-size: 21px;
   line-height: 44px;
-  background-color: ${({iswritten, theme,isactive}) => iswritten==="true" ? theme.colors.GRAY : (isactive==="true" ? theme.colors.BLUE2 : theme.colors.BLUE1)};
+  background-color: ${({type, theme,isactive}) => type==="true" ? theme.colors.GRAY : (isactive==="true" ? theme.colors.BLUE2 : theme.colors.BLUE1)};
 `
