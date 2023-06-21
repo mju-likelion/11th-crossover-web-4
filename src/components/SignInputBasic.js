@@ -1,41 +1,33 @@
 import styled from 'styled-components';
-import { validation } from '../pages/Join/Validation';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
 import cancelIcon from '../assets/images/cancelicon.svg';
 import successIcon from '../assets/images/successicon.svg';
 import errorIcon from '../assets/images/erroricon.svg';
 
-const SignInputBasic = ({ name, placeholder, helperText }) => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    watch,
-    setValue,
-    // setValue는 register로 등록한 '값'을 변화시킬 수 있다.
-  } = useForm({
-    resolver: yupResolver(validation),
-    mode: 'onChange',
-  });
-  const onSubmit = (data) => {
-    console.log(data);
-  };
-
-  const inputValue = watch();
-
+const SignInputBasic = ({
+  name,
+  placeholder,
+  helperText,
+  register,
+  handleSubmit,
+  errors,
+  setValue,
+  onSubmit,
+  inputValue,
+}) => {
   return (
     <>
       <AllContainer onSubmit={handleSubmit(onSubmit)}>
         <BoxWrapper
           iserror={errors[name] ? 'true' : 'false'}
           issuccess={!errors[name] && inputValue[name] ? 'true' : 'false'}
+          htmlFor={name} //react에서는 htmlFor로 id와 연결, 클릭 부분 확장
         >
           <InputBox>
             <SignInput
               type="text"
               placeholder={placeholder}
               name={name}
+              id={name}
               {...register(name)}
             />
 
@@ -75,8 +67,9 @@ const AllContainer = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 18px;
 `;
-const BoxWrapper = styled.div`
+const BoxWrapper = styled.label`
   width: 540px;
   height: 90px;
   border: 2px solid
