@@ -2,14 +2,33 @@ import styled from 'styled-components';
 import { data } from '../assets/data/AgreeTerms';
 import SignInputBasic from './SignInputBasic';
 import NextButton from './NextButton';
+import { useEffect, useState } from 'react';
+
 const SignUp = () => {
+  const [isValid, setIsValid] = useState(false);
+  useEffect(() => {
+    setIsValid(!isValid);
+  }, []);
+
   return (
     <AllContainer>
       <InputContainer>
         <Title>회원가입</Title>
-        <SignInputBasic></SignInputBasic>
-        <SignInputBasic></SignInputBasic>
-        <SignInputBasic></SignInputBasic>
+        <SignInputBasic
+          name="id"
+          placeholder="아이디"
+          helperText="영문과 숫자을 조합하여 5~10글자 미만으로 입력하여 주세요."
+        />
+        <SignInputBasic
+          name="password"
+          placeholder="비밀번호"
+          helperText="영문과 숫자, 특수기호를 조합하여 8~14 글자 미만으로 입력하여 주세요."
+        />
+        <SignInputBasic
+          name="email"
+          placeholder="이메일"
+          helperText="사용하실 이메일을 입력해주세요."
+        />
       </InputContainer>
       <AgreeContainer>
         <AgreeTop>
@@ -18,14 +37,14 @@ const SignUp = () => {
           </AgreeTitle>
           <AgreeCheck>
             <CheckTitle>약관동의</CheckTitle>
-            <CheckBox type="checkbox"></CheckBox>
+            <CheckBox type="checkbox" />
           </AgreeCheck>
         </AgreeTop>
         <AgreeContentWrapper>
           <AgreeContent>{data}</AgreeContent>
         </AgreeContentWrapper>
       </AgreeContainer>
-      <NextButton>완료하기</NextButton>
+      <NextButton children="완료하기"></NextButton>
     </AllContainer>
   );
 };
@@ -71,6 +90,7 @@ const AgreeTop = styled.div`
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  padding: 0 20px;
 `;
 const Essential = styled.span`
   font-size: 20px;
