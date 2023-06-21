@@ -7,12 +7,13 @@ const PostList = () => {
     <AllContainer>
       <PostContainer>
         <WriteButtonWrapper>
-          <ContentButton children="작성하기" type="true" iswritten="false" />
+          <ContentButton children="작성하기" isActive="true" type="false" />
         </WriteButtonWrapper>
         <Post who="other" />
         <Post who="me" />
         <Post who="other" />
         <Post who="other" />
+        <Post who="me" />
       </PostContainer>
     </AllContainer>
   );
