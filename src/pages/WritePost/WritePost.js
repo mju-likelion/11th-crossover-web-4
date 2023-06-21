@@ -1,32 +1,50 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
 import ContentButton from "../../components/ContentButton";
+import {useForm} from "react-hook-form";
 
 
 const WritePost = () => {
+  const [titleCount, setTitleCount] = useState("");
+  const [contentCount, setContentCount] = useState("");
+  const {handleSubmit, register} = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+  };
+
   return (
     <>
       <WritePostContainer>
         <TextBox>
-          <TitleBox>
-            <TitlePart>
-              <Title>제목: </Title>
-              <TitleInput></TitleInput>
-            </TitlePart>
-            <TitleLength> ( 0 / 20 )</TitleLength>
-          </TitleBox>
-          <ContentBox>
-            {/*<ContentPart>*/}
-            <ContentInput/>
-            <ContentLength>( 0 / 140 )</ContentLength>
-            {/*</ContentPart>*/}
-          </ContentBox>
-          <BottomBox>
-            <InfoBox>※ 작성된 게시글은 수정이 불가합니다.</InfoBox>
-            <ButtonBox>
-              <ContentButton>작성하기</ContentButton>
-            </ButtonBox>
-          </BottomBox>
+          <form onSubmit={handleSubmit(onSubmit)}>
+            <TitleBox>
+              <TitlePart>
+                <Title>제목: </Title>
+                <TitleInput
+                id='title'
+                type='text'
+                maxLength={20}
+                {...register('title')}
+                onChange={(e) => setTitleCount((e.target.value))} />
+              </TitlePart>
+              <TitleLength>( {titleCount.length} / 20 )</TitleLength>
+            </TitleBox>
+            <ContentBox>
+              <ContentInput
+              id='content'
+              type='text'
+              maxLength={140}
+              {...register('content')}
+              onChange={(e) => setContentCount((e.target.value))} />
+              <ContentLength>( {contentCount.length} / 140 )</ContentLength>
+            </ContentBox>
+            <BottomBox>
+              <InfoBox>※ 작성된 게시글은 수정이 불가합니다.</InfoBox>
+              <ButtonBox>
+                <ContentButton type='false' isactive={titleCount && contentCount ? 'true' : 'false'}>작성하기</ContentButton>
+              </ButtonBox>
+            </BottomBox>
+          </form>
         </TextBox>
       </WritePostContainer>
     </>
