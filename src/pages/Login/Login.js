@@ -55,9 +55,9 @@ const Login = () => {
         </InputContainer>
         <Button>
         {inputValue.id && inputValue.password ? (
-          <NextButton type="submit" children="로그인" isfull="true" onClick={goList}></NextButton>
+          <NextButton type="submit" children="로그인" isfull="true"></NextButton>
         ) : (
-          <NextButton type="subm현it" children="로그인"></NextButton>
+          <NextButton type="submit" children="로그인"></NextButton>
         )}
         </Button>
       </AllContainer>
