@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import cancelIcon from '../../assets/images/cancelicon.svg';
 import errorIcon from '../../assets/images/erroricon.svg';
 
-const SignInputBasic = ({
+const LoginInputBasic = ({
   name,
   placeholder,
   helperText,
@@ -106,4 +106,4 @@ const HelperText = styled.div`
   font-size: 16px;
   font-weight: 500;
 `;
-export default SignInputBasic;
+export default LoginInputBasic;
