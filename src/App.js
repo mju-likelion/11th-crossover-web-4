@@ -10,10 +10,7 @@ import {Route, Routes} from "react-router-dom";
 import WritePost from "./pages/WritePost/WritePost";
 import SignUp from "./pages/Join/SignUp";
 import Content from "./pages/Content/Content";
-
-function Login() {
-  return null;
-}
+import Login from "./pages/Login/Login";
 
 function App() {
   return (

@@ -1,11 +1,13 @@
 import React from 'react';
-import styled from "styled-components";
+import styled from 'styled-components';
 // import {Theme} from "../styles/Theme"; //?
 
-const NextButton = ({children, isfull}) => {
+const NextButton = ({ children, isfull, clickPath }) => {
   return (
     <>
-      <Button isfull={isfull}>{children}</Button>
+      <Button isfull={isfull} onClick={clickPath}>
+        {children}
+      </Button>
     </>
   );
 };
@@ -18,5 +20,6 @@ const Button = styled.button`
   color: white;
   font-size: 36px;
   line-height: 44px;
-  background-color: ${({isfull, theme}) => isfull==="true" ? theme.colors.BLUE2 : theme.colors.BLUE1};
-`
+  background-color: ${({ isfull, theme }) =>
+    isfull === 'true' ? theme.colors.BLUE2 : theme.colors.BLUE1};
+`;
