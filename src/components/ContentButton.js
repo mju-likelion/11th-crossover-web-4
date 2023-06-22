@@ -1,11 +1,13 @@
 import React from 'react';
-import styled from "styled-components";
+import styled from 'styled-components';
 // import {Theme} from "../styles/Theme";
 
-const ContentButton = ({children, isactive, type}) => {
+const ContentButton = ({ children, isactive, type, clickPath }) => {
   return (
     <>
-      <Button type={type} isactive={isactive}>{children}</Button>
+      <Button type={type} isactive={isactive} onClick={clickPath}>
+        {children}
+      </Button>
     </>
   );
 };
@@ -19,5 +21,10 @@ const Button = styled.button`
   color: white;
   font-size: 21px;
   line-height: 44px;
-  background-color: ${({type, theme,isactive}) => type==="true" ? theme.colors.GRAY : (isactive==="true" ? theme.colors.BLUE2 : theme.colors.BLUE1)};
-`
+  background-color: ${({ type, theme, isactive }) =>
+    type === 'true'
+      ? theme.colors.GRAY
+      : isactive === 'true'
+      ? theme.colors.BLUE2
+      : theme.colors.BLUE1};
+`;
