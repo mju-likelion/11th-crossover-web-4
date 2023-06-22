@@ -2,13 +2,18 @@ import React, {useState} from 'react';
 import styled from "styled-components";
 import Airplane from "../assets/images/airplaneIcon.svg";
 import Logout from "../assets/images/logout icon.svg";
+import {useNavigate} from "react-router-dom";
 
 const Header = () => {
   const [isLogin, setIsLogin] = useState(false);
+  const navigate = useNavigate();
+  const goList = () => {
+    navigate(`/`);
+  }
   return (
     <>
       <HeaderBar>
-        <Logo src={Airplane} alt="logo" />
+        <Logo src={Airplane} alt="logo" onClick={goList} />
         {isLogin && <LogoutIcon src={Logout} alt="logout"/>}
       </HeaderBar>
     </>
@@ -28,6 +33,7 @@ const Logo = styled.img`
   width: 174px;
   height: 34px;
   margin: 42px 0 43px 363px;
+  cursor: pointer;
 `
 
 const LogoutIcon = styled.img`
