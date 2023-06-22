@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import cancelIcon from '../assets/images/cancelicon.svg';
-import successIcon from '../assets/images/successicon.svg';
-import errorIcon from '../assets/images/erroricon.svg';
+import cancelIcon from '../../assets/images/cancelicon.svg';
+import successIcon from '../../assets/images/successicon.svg';
+import errorIcon from '../../assets/images/erroricon.svg';
 
 const SignInputBasic = ({
   name,

@@ -1,13 +1,13 @@
 import styled from 'styled-components';
-import { DATA } from '../assets/data/AgreeTerms';
+import { DATA } from '../../assets/data/AgreeTerms';
 import SignInputBasic from './SignInputBasic';
-import NextButton from './NextButton';
-import { validation } from '../pages/Join/Validation';
+import NextButton from '../../components/NextButton';
+import { validation } from './Validation';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
-import checkBox from '../assets/images/checkbox.svg';
-import noncheck from '../assets/images/noncheck.svg';
+import checkBox from '../../assets/images/checkbox.svg';
+import noncheck from '../../assets/images/noncheck.svg';
 
 const SignUp = () => {
   const {
