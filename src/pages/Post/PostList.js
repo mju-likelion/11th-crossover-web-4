@@ -2,21 +2,34 @@ import styled from 'styled-components';
 import Post from './Post';
 import ContentButton from '../../components/ContentButton';
 import { POST_DATA } from '../../assets/data/PostData';
-
+import { useNavigate } from 'react-router-dom';
 const PostList = () => {
+  const navigate = useNavigate();
+  const goWrite = () => {
+    navigate('/write');
+  };
+  const goPost = (postId) => {
+    navigate(`/${postId}`);
+  };
   return (
     <AllContainer>
       <PostContainer>
         <WriteButtonWrapper>
-          <ContentButton children="작성하기" isactive="true" type="false" />
+          <ContentButton
+            children="작성하기"
+            isactive="true"
+            type="false"
+            clickPath={goWrite}
+          />
         </WriteButtonWrapper>
-        {POST_DATA.map(({ userName, title, content, time }, index) => (
+        {POST_DATA.map((postData, index) => (
           <Post
-            userName={userName}
-            title={title}
-            content={content}
-            time={time}
+            userName={postData.userName}
+            title={postData.title}
+            content={postData.content}
+            time={postData.time}
             key={index}
+            onClick={() => goPost(postData.id)}
           />
         ))}
       </PostContainer>
