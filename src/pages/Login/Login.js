@@ -1,18 +1,18 @@
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import NextButton from "../../components/NextButton";
-import {useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
-import {validation} from "../Join/Validation";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 import LoginInputBasic from "./LoginInputBasic";
-import {useNavigate} from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
+import { validation } from "./Validation";
 const Login = () => {
   const {
     register,
     handleSubmit,
-    formState: {errors},
+    formState: { errors },
     watch,
-    setValue, // setValue는 register로 등록한 '값'을 변화시킬 수 있다.
+    setValue,
   } = useForm({
     resolver: yupResolver(validation),
   });
@@ -20,7 +20,6 @@ const Login = () => {
     console.log(data);
   };
   const inputValue = watch();
-
   const navigate = useNavigate();
   const goSignUp = () => {
     navigate(`/join`);
@@ -28,10 +27,7 @@ const Login = () => {
 
   return (
     <>
-      <AllContainer onSubmit={(e) => {
-        e.preventDefault();
-        handleSubmit(onSubmit)
-      }}>
+      <AllContainer onSubmit={handleSubmit(onSubmit)}>
         <InputContainer>
           <Title>로그인</Title>
           <LoginInputBasic
@@ -42,7 +38,7 @@ const Login = () => {
             errors={errors}
             setValue={setValue}
             inputValue={inputValue}
-          />
+            />
           <LoginInputBasic
             name="password"
             placeholder="비밀번호"
@@ -51,23 +47,25 @@ const Login = () => {
             errors={errors}
             setValue={setValue}
             inputValue={inputValue}
-          />
+            />
         </InputContainer>
         <Button>
           {inputValue.id && inputValue.password ? (
-            <NextButton type="submit" children="로그인" isfull="true"></NextButton>
-          ) : (
+            <NextButton
+              type="submit"
+            children="로그인"
+            isfull="true"
+            ></NextButton>
+            ) : (
             <NextButton type="submit" children="로그인"></NextButton>
-          )}
+            )}
         </Button>
       </AllContainer>
       <SignUpLink onClick={goSignUp}>회원가입</SignUpLink>
     </>
   );
 };
-
 export default Login;
-
 const AllContainer = styled.form`
   width: 100%;
   height: 100%;
@@ -75,21 +73,20 @@ const AllContainer = styled.form`
   flex-direction: column;
   align-items: center;
   padding-top: 134px;
-`
+`;
 const InputContainer = styled.div`
   width: 540px;
   display: flex;
   flex-direction: column;
   align-items: center;
-`
+`;
 const Title = styled.div`
   width: 199px;
   height: 74px;
   font-size: 54px;
   font-weight: 600;
   margin-bottom: 65px;
-`
-
+`;
 const Button = styled.div`
   //margin-top: 58px;
 `

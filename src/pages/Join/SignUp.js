@@ -88,7 +88,7 @@ const SignUp = () => {
         </AgreeContentWrapper>
       </AgreeContainer>
       {inputValue.id && inputValue.password && inputValue.email && isCheck ? (
-        <NextButton children="완료하기" isFull="true"></NextButton>
+        <NextButton children="완료하기" isfull="true"></NextButton>
       ) : (
         <NextButton children="완료하기"></NextButton>
       )}
