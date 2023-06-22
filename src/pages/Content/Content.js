@@ -4,7 +4,7 @@ import ContentButton from "../../components/ContentButton";
 import {useForm} from "react-hook-form";
 
 
-const Content = (user) => {
+const Content = ({ userName, title, content }) => {
   // 서버에서 제목, 내용, 날짜, ... 가져오기
   const MAX_TITLE_LENGTH = 20;
   const MAX_CONTENT_LENGTH = 140;
@@ -15,21 +15,22 @@ const Content = (user) => {
           {/*<form onSubmit={() => handleSubmit(onSubmit)}>*/}
             <TitleBox>
               <TitlePart>
-                <Title>제목 : 제목!</Title>
+                <Title>제목 : {title}</Title>
               </TitlePart>
               <TitleLength>( 7 / 20 )</TitleLength>
             </TitleBox>
             <ContentBox>
               <ContentArea>
-                내용이 들어갑니다
+                {content}
               </ContentArea><ContentLength>( 9 / 140 )</ContentLength>
             </ContentBox>
+          {(userName === 'me') &&
             <BottomBox>
-              { user === 'me' && <InfoBox>※ 작성된 게시글은 수정이 불가합니다.</InfoBox> }
+              <InfoBox>※ 작성된 게시글은 수정이 불가합니다.</InfoBox>
                 <ButtonBox>
-                  { user === 'me' && <ContentButton type='true'>삭제하기</ContentButton> }
+                  <ContentButton type='true'>삭제하기</ContentButton>
                 </ButtonBox>
-            </BottomBox>
+            </BottomBox> }
           {/*</form>*/}
         </TextBox>
       </WritePostContainer>
