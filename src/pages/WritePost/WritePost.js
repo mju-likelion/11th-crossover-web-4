@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import styled from "styled-components";
 import ContentButton from "../../components/ContentButton";
 import {useForm} from "react-hook-form";
+import {useNavigate} from "react-router-dom";
 
 
 const WritePost = () => {
@@ -13,6 +14,11 @@ const WritePost = () => {
   };
   const MAX_TITLE_LENGTH = 20;
   const MAX_CONTENT_LENGTH = 140;
+
+  const navigate = useNavigate();
+  const goList = () => {
+    navigate("/");
+  }
 
   return (
     <>
@@ -43,7 +49,7 @@ const WritePost = () => {
             <BottomBox>
               <InfoBox>※ 작성된 게시글은 수정이 불가합니다.</InfoBox>
               <ButtonBox>
-                <ContentButton type='false' isactive={titleCount && contentCount ? 'true' : 'false'}>작성하기</ContentButton>
+                <ContentButton type='false' clickPath={goList} isactive={titleCount && contentCount ? 'true' : 'false'} >작성하기</ContentButton>
               </ButtonBox>
             </BottomBox>
           </form>
