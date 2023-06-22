@@ -6,6 +6,7 @@ import {yupResolver} from "@hookform/resolvers/yup";
 import {validation} from "../Join/Validation";
 import LoginInputBasic from "./LoginInputBasic";
 import Header from "../../components/Header";
+import {useNavigate} from "react-router-dom";
 
 const Login = () => {
   const {
@@ -22,63 +23,47 @@ const Login = () => {
   };
   const inputValue = watch();
 
+  const navigate = useNavigate();
+  const goList = () => {
+    navigate(`/`);
+  }
+
   return (
-
     <>
-      <Header isLogin="true" />
-        <AllContainer onSubmit={handleSubmit(onSubmit)}>
-          <InputContainer>
-            <Title>로그인</Title>
-            <LoginInputBasic
-              name="id"
-              placeholder="아이디"
-              helperText="영문과 숫자를 조합하여 5~10글자 미만으로 입력하여 주세요."
-              register={register}
-              errors={errors}
-              setValue={setValue}
-              inputValue={inputValue}
-            />
+      <AllContainer onSubmit={handleSubmit(onSubmit)}>
+        <InputContainer>
+          <Title>로그인</Title>
+          <LoginInputBasic
+            name="id"
+            placeholder="아이디"
+            helperText="영문과 숫자를 조합하여 5~10글자 미만으로 입력하여 주세요."
+            register={register}
+            errors={errors}
+            setValue={setValue}
+            inputValue={inputValue}
+          />
 
-            <LoginInputBasic
-              name="password"
-              placeholder="비밀번호"
-              helperText="영문과 숫자, 특수기호를 조합하여 8~14 글자 미만으로 입력하여 주세요."
-              register={register}
-              handleSubmit={handleSubmit}
-              errors={errors}
-              setValue={setValue}
-              onSubmit={onSubmit}
-              inputValue={inputValue}
-            />
-          </InputContainer>
-          {inputValue.id && inputValue.password ? (
-            <NextButton type="submit" children="로그인" isfull="true"></NextButton>
-          ) : (
-            <NextButton type="submit" children="로그인"></NextButton>
-          )}
-        </AllContainer>
-
-        {/*<LoginContainer>*/}
-        {/*  <Title>로그인</Title>*/}
-        {/*  <IDBox>*/}
-        {/*    <SignInputBasic*/}
-        {/*      placeholder='아이디'*/}
-        {/*      name='id'*/}
-        {/*      helperText='영문과 숫자를 조합하여 5~10글자 미만으로 입력하여 주세요.'*/}
-        {/*    />*/}
-        {/*  </IDBox>*/}
-        {/*  <PWBox>*/}
-        {/*    <SignInputBasic*/}
-        {/*      placeholder='비밀번호'*/}
-        {/*      name='password'*/}
-        {/*      helperText='영문과 숫자, 특수기호를 조합하여 8~14 글자 미만으로 입력하여 주세요.'*/}
-        {/*    />*/}
-        {/*  </PWBox>*/}
-        {/*  <NextButton*/}
-        {/*  >로그인</NextButton>*/}
-        {/*</LoginContainer>*/}
-        {/*<SignUp>회원가입</SignUp>*/}
-      </>
+          <LoginInputBasic
+            name="password"
+            placeholder="비밀번호"
+            helperText="영문과 숫자, 특수기호를 조합하여 8~14 글자 미만으로 입력하여 주세요."
+            register={register}
+            handleSubmit={handleSubmit}
+            errors={errors}
+            setValue={setValue}
+            onSubmit={onSubmit}
+            inputValue={inputValue}
+          />
+        </InputContainer>
+        <Button>
+        {inputValue.id && inputValue.password ? (
+          <NextButton type="submit" children="로그인" isfull="true"></NextButton>
+        ) : (
+          <NextButton type="submit" children="로그인"></NextButton>
+        )}
+        </Button>
+      </AllContainer>
+    </>
   );
 };
 
@@ -107,12 +92,9 @@ const Title = styled.div`
   margin-bottom: 65px;
 `
 
-const ErrorText = styled.div`
-  text-align: left;
-  width: 495px;
-  height: 19px;
+const Button = styled.div`
+  margin-top: 58px;
 `
-
 
 // const LoginContainer = styled.div`
 //   display: flex;
