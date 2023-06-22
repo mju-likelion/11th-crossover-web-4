@@ -8,6 +8,9 @@ const PostList = () => {
   const goWrite = () => {
     navigate('/write');
   };
+  const goPost = (postId) => {
+    navigate(`/${postId}`);
+  };
   return (
     <AllContainer>
       <PostContainer>
@@ -19,13 +22,14 @@ const PostList = () => {
             clickPath={goWrite}
           />
         </WriteButtonWrapper>
-        {POST_DATA.map(({ userName, title, content, time }, index) => (
+        {POST_DATA.map((postData, index) => (
           <Post
-            userName={userName}
-            title={title}
-            content={content}
-            time={time}
+            userName={postData.userName}
+            title={postData.title}
+            content={postData.content}
+            time={postData.time}
             key={index}
+            onClick={() => goPost(postData.id)}
           />
         ))}
       </PostContainer>
