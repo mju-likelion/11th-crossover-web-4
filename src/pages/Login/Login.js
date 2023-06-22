@@ -98,4 +98,5 @@ const SignUpLink = styled.p`
   font-size: 20px;
   font-weight: 600;
   color: ${({theme}) => theme.colors.GRAY};
+  cursor: pointer;
 `
