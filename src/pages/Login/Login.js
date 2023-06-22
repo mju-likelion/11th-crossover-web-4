@@ -1,11 +1,9 @@
-import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 import NextButton from "../../components/NextButton";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import {validation} from "../Join/Validation";
 import LoginInputBasic from "./LoginInputBasic";
-import Header from "../../components/Header";
 import {useNavigate} from "react-router-dom";
 
 const Login = () => {
@@ -24,16 +22,16 @@ const Login = () => {
   const inputValue = watch();
 
   const navigate = useNavigate();
-  const goList = () => {
-    navigate(`/`);
-  }
   const goSignUp = () => {
     navigate(`/join`);
   }
 
   return (
     <>
-      <AllContainer onSubmit={(e) => {e.preventDefault(); handleSubmit(onSubmit)}}>
+      <AllContainer onSubmit={(e) => {
+        e.preventDefault();
+        handleSubmit(onSubmit)
+      }}>
         <InputContainer>
           <Title>로그인</Title>
           <LoginInputBasic
@@ -45,7 +43,6 @@ const Login = () => {
             setValue={setValue}
             inputValue={inputValue}
           />
-
           <LoginInputBasic
             name="password"
             placeholder="비밀번호"
@@ -57,13 +54,12 @@ const Login = () => {
           />
         </InputContainer>
         <Button>
-        {inputValue.id && inputValue.password ? (
-          <NextButton type="submit" children="로그인" isfull="true"></NextButton>
-        ) : (
-          <NextButton type="submit" children="로그인"></NextButton>
-        )}
+          {inputValue.id && inputValue.password ? (
+            <NextButton type="submit" children="로그인" isfull="true"></NextButton>
+          ) : (
+            <NextButton type="submit" children="로그인"></NextButton>
+          )}
         </Button>
-
       </AllContainer>
       <SignUpLink onClick={goSignUp}>회원가입</SignUpLink>
     </>
