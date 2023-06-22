@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import Post from './Post';
 import ContentButton from '../../components/ContentButton';
+import { POST_DATA } from '../../assets/data/PostData';
 
 const PostList = () => {
   return (
@@ -9,8 +10,14 @@ const PostList = () => {
         <WriteButtonWrapper>
           <ContentButton children="작성하기" isactive="true" type="false" />
         </WriteButtonWrapper>
-        {['other', 'me', 'other', 'other', 'me'].map((item, index) => (
-          <Post userName={item} key={index} />
+        {POST_DATA.map(({ userName, title, content, time }, index) => (
+          <Post
+            userName={userName}
+            title={title}
+            content={content}
+            time={time}
+            key={index}
+          />
         ))}
       </PostContainer>
     </AllContainer>
@@ -25,7 +32,7 @@ const PostContainer = styled.div`
   width: 783px;
   height: 100%;
   margin: auto;
-  /* margin: auto는 가로 중앙에 배치한다는 뜻이다. 그리고 자연스럽게 좌우 여백은 균등하게 배분 */
+  /* 컨테이너의 width가 확보되어 margin이 유효할 수 있을 때 */
 `;
 const WriteButtonWrapper = styled.div`
   width: 100%;
