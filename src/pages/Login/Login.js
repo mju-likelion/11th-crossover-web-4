@@ -48,10 +48,8 @@ const Login = () => {
             placeholder="비밀번호"
             helperText="영문과 숫자, 특수기호를 조합하여 8~14 글자 미만으로 입력하여 주세요."
             register={register}
-            handleSubmit={handleSubmit}
             errors={errors}
             setValue={setValue}
-            onSubmit={onSubmit}
             inputValue={inputValue}
           />
         </InputContainer>
@@ -59,7 +57,7 @@ const Login = () => {
         {inputValue.id && inputValue.password ? (
           <NextButton type="submit" children="로그인" isfull="true"></NextButton>
         ) : (
-          <NextButton type="submit" children="로그인"></NextButton>
+          <NextButton type="subm현it" children="로그인"></NextButton>
         )}
         </Button>
       </AllContainer>
@@ -79,7 +77,6 @@ const AllContainer = styled.form`
 `
 const InputContainer = styled.div`
   width: 540px;
-  height: 592px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -95,33 +92,3 @@ const Title = styled.div`
 const Button = styled.div`
   margin-top: 58px;
 `
-
-// const LoginContainer = styled.div`
-//   display: flex;
-//   justify-content: center;
-//   flex-direction: column;
-//   align-items: center;
-// `
-//
-// const Title = styled.div`
-//   font-size: 54px;
-//   font-weight: 600;
-//   margin: 145px 0 65px 0;
-// `
-//
-// const IDBox = styled.div`
-//   margin-bottom: 21px;
-// `
-//
-// const PWBox = styled.div`
-//   margin-bottom: 61px;
-// `
-//
-// const SignUp = styled.div`
-//   float: right;
-//   margin-right: 685px;
-//   margin-top: 61px;
-//   font-size: 20px;
-//   font-weight: 600;
-//   color: ${({theme}) => theme.colors.GRAY};
-// `
