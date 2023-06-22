@@ -33,7 +33,7 @@ const Login = () => {
 
   return (
     <>
-      <AllContainer onSubmit={() => handleSubmit(onSubmit)}>
+      <AllContainer onSubmit={(e) => {e.preventDefault(); handleSubmit(onSubmit)}}>
         <InputContainer>
           <Title>로그인</Title>
           <LoginInputBasic
