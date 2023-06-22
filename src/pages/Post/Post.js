@@ -2,9 +2,9 @@ import MyProfile from '../../assets/images/profile.svg';
 import OtherProfile from '../../assets/images/profilenone.svg';
 import styled from 'styled-components';
 
-const Post = ({ userName, title, content, time }) => {
+const Post = ({ userName, title, content, time, onClick }) => {
   return (
-    <PostBox>
+    <PostBox onClick={onClick}>
       <PostTop>
         <PostProfile>
           {userName === 'me' && <ProfileImg src={MyProfile} alt="MyProfile" />}
