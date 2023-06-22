@@ -19,7 +19,7 @@ const LoginInputBasic = ({
       >
         <InputBox>
           <SignInput
-            type="text"
+            type={name}
             placeholder={placeholder}
             name={name}
             id={name}
