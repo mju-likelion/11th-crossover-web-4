@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import cancelIcon from '../../assets/images/cancelicon.svg';
-// import successIcon from '../../assets/images/successicon.svg';
 import errorIcon from '../../assets/images/erroricon.svg';
 
 const SignInputBasic = ({
@@ -8,17 +7,13 @@ const SignInputBasic = ({
   placeholder,
   helperText,
   register,
-  // handleSubmit,
   errors,
   setValue,
-  // onSubmit,
   inputValue,
 }) => {
   return (
-    <AllContainer onSubmit={handleSubmit(onSubmit)}>
-      {/* 여기 onSubmit 옮기기 */}
+    <AllContainer>
       <BoxWrapper
-        // issuccess={!errors[name] && inputValue[name] ? 'true' : 'false'}
         iserror={errors[name] ? 'true' : 'false'}
         htmlFor={name} //react에서는 htmlFor로 id와 연결, 클릭 부분 확장
       >
@@ -30,10 +25,6 @@ const SignInputBasic = ({
             id={name}
             {...register(name)}
           />
-
-          {/* {inputValue[name] && !errors[name] && (
-              <IsSuccessIcon src={successIcon} alt="successIcon" />
-            )} */}
           {errors[name] && <IsSuccessIcon src={errorIcon} alt="errorIcon" />}
           {/* 중첩 삼항 연산자에서 변경! */}
 
@@ -56,7 +47,6 @@ const SignInputBasic = ({
       {!errors[name] && !inputValue[name] && (
         <HelperText>{helperText}</HelperText>
       )}
-      {/* 중첩 삼항 연산자에서 변경 */}
     </AllContainer>
   );
 };
