@@ -27,6 +27,9 @@ const Login = () => {
   const goList = () => {
     navigate(`/`);
   }
+  const goSignUp = () => {
+    navigate(`/join`);
+  }
 
   return (
     <>
@@ -60,7 +63,9 @@ const Login = () => {
           <NextButton type="submit" children="로그인"></NextButton>
         )}
         </Button>
+
       </AllContainer>
+      <SignUpLink onClick={goSignUp}>회원가입</SignUpLink>
     </>
   );
 };
@@ -90,5 +95,14 @@ const Title = styled.div`
 `
 
 const Button = styled.div`
-  margin-top: 58px;
+  //margin-top: 58px;
+`
+
+const SignUpLink = styled.p`
+  float: right;
+  margin-right: 705px;
+  margin-top: 31px;
+  font-size: 20px;
+  font-weight: 600;
+  color: ${({theme}) => theme.colors.GRAY};
 `
