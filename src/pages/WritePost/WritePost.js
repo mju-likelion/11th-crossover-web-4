@@ -76,8 +76,6 @@ const TextBox = styled.div`
 
 const TitleBox = styled.div`
   display: flex;
-  //justify-content: space-between;
-  //flex-wrap: nowrap;
   height: 134px;
   border-radius: 25px;
   border: 2px solid ${({theme}) => theme.colors.GRAY};
@@ -135,6 +133,7 @@ const ContentInput = styled.textarea`
   font-weight: 500;
   font-size: 20px;
   line-height: 24px;
+  outline: none;
 `
 
 const ContentLength = styled.div`
