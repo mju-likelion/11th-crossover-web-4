@@ -10,6 +10,7 @@ function App() {
     <ThemeProvider theme={Theme}>
       <GlobalStyle />
       <Header />
+      <PostList/>
     </ThemeProvider>
   );
 }
