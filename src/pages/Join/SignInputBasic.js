@@ -8,15 +8,15 @@ const SignInputBasic = ({
   placeholder,
   helperText,
   register,
-  handleSubmit,
+  // handleSubmit,
   errors,
   setValue,
-  onSubmit,
+  // onSubmit,
   inputValue,
 }) => {
   return (
     <>
-      <AllContainer onSubmit={handleSubmit(onSubmit)}>
+      <AllContainer >
         <BoxWrapper
           iserror={errors[name] ? 'true' : 'false'}
           issuccess={!errors[name] && inputValue[name] ? 'true' : 'false'}
