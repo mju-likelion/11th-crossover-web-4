@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import NextButton from "../../components/NextButton";
 import { useForm } from "react-hook-form";
@@ -6,7 +5,9 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import LoginInputBasic from "./LoginInputBasic";
 import { useNavigate } from "react-router-dom";
 import { validation } from "./Validation";
+import {AxiosLogin} from "../../api/Login";
 const Login = () => {
+  const navigate= useNavigate();
   const {
     register,
     handleSubmit,
@@ -16,13 +17,17 @@ const Login = () => {
   } = useForm({
     resolver: yupResolver(validation),
   });
-  const onSubmit = (data) => {
-    console.log(data);
-  };
+
   const inputValue = watch();
-  const navigate = useNavigate();
   const goSignUp = () => {
     navigate(`/join`);
+  }
+
+  const callbackFunctions = {
+    navigateSuccess : ()=> navigate('/')
+  };
+  const onSubmit = (data) => {
+    AxiosLogin(data, callbackFunctions);
   }
 
   return (
