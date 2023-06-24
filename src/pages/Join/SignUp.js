@@ -8,6 +8,8 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useState } from 'react';
 import checkBox from '../../assets/images/checkbox.svg';
 import noncheck from '../../assets/images/noncheck.svg';
+import { AxiosJoin } from '../../api/Join';
+import { useNavigate } from 'react-router-dom';
 
 const SignUp = () => {
   const {
@@ -21,9 +23,16 @@ const SignUp = () => {
     resolver: yupResolver(validation),
     mode: 'onChange',
   });
+  const navigate = useNavigate();
+
+  const callbackFunction = () => {
+    navigate('/login');
+  };
   const onSubmit = (data) => {
     console.log(data);
+    AxiosJoin(data, callbackFunction);
   };
+
   const inputValue = watch();
 
   const [isCheck, setIsCheck] = useState(false);
@@ -32,7 +41,7 @@ const SignUp = () => {
   };
 
   return (
-    <AllContainer>
+    <AllContainer onSubmit={handleSubmit(onSubmit)}>
       <InputContainer>
         <Title>회원가입</Title>
         <SignInputBasic
@@ -98,7 +107,7 @@ const SignUp = () => {
 
 export default SignUp;
 
-const AllContainer = styled.div`
+const AllContainer = styled.form`
   width: 100%;
   height: 100%;
   display: flex;
