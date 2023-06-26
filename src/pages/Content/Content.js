@@ -2,12 +2,22 @@
 import styled from "styled-components";
 import ContentButton from "../../components/ContentButton";
 import {useForm} from "react-hook-form";
+import {useEffect, useState} from "react";
+import {AxiosPost} from "../../api/Post";
+import {useParams} from "react-router-dom";
 
 
-const Content = ({ userName, title, content }) => {
-  // 서버에서 제목, 내용, 날짜, ... 가져오기
-  const MAX_TITLE_LENGTH = 20;
-  const MAX_CONTENT_LENGTH = 140;
+const Content = ({ userName }) => { // userName?
+  const [data, setData] = useState("");
+  const { title, content, isMine } = data;
+  const {id} = useParams();
+
+  const callbackFunctions = {
+    getData: (data) => setData(data)
+  }
+  useEffect(() => {
+    AxiosPost(id, callbackFunctions);
+  }, []); // 처음 한 번만 실행
   return (
     <>
       <WritePostContainer>
@@ -17,14 +27,14 @@ const Content = ({ userName, title, content }) => {
               <TitlePart>
                 <Title>제목 : {title}</Title>
               </TitlePart>
-              <TitleLength>( 7 / 20 )</TitleLength>
+              <TitleLength>( {String(title).length} / 20 )</TitleLength>
             </TitleBox>
             <ContentBox>
               <ContentArea>
                 {content}
-              </ContentArea><ContentLength>( 9 / 140 )</ContentLength>
+              </ContentArea><ContentLength>( {String(content).length} / 140 )</ContentLength>
             </ContentBox>
-          {(userName === 'me') &&
+          {isMine &&
             <BottomBox>
               <InfoBox>※ 작성된 게시글은 수정이 불가합니다.</InfoBox>
                 <ButtonBox>
