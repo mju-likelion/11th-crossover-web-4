@@ -4,17 +4,23 @@ import ContentButton from "../../components/ContentButton";
 import {useForm} from "react-hook-form";
 import {useEffect, useState} from "react";
 import {AxiosPost} from "../../api/Post";
-import {useParams} from "react-router-dom";
+import {useNavigate, useParams} from "react-router-dom";
+import {AxiosDelete} from "../../api/Delete";
 
 
 const Content = ({ userName }) => { // userName?
   const [data, setData] = useState("");
   const { title, content, isMine } = data;
   const {id} = useParams();
+  const navigate = useNavigate();
 
   const callbackFunctions = {
-    getData: (data) => setData(data)
+    getData: (data) => setData(data),
+    navigateSuccess: () => navigate("/")
   }
+  const deletePost = () => {
+    AxiosDelete(id, callbackFunctions);
+  };
   useEffect(() => {
     AxiosPost(id, callbackFunctions);
   }, []); // 처음 한 번만 실행
