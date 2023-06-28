@@ -6,7 +6,7 @@ const ContentButton = ({ children, isactive, onBtn, clickPath }) => {
   return (
     <>
       <Button
-        type="submit"
+        // type="submit"
         onBtn={onBtn}
         isactive={isactive}
         onClick={clickPath}

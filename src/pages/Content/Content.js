@@ -1,37 +1,54 @@
-// import React, {useState} from 'react';
 import styled from "styled-components";
 import ContentButton from "../../components/ContentButton";
-import {useForm} from "react-hook-form";
+import {useEffect, useState} from "react";
+import {AxiosPost} from "../../api/Post";
+import {useNavigate, useParams} from "react-router-dom";
+import {AxiosDelete} from "../../api/Delete";
 
 
-const Content = ({ userName, title, content }) => {
-  // 서버에서 제목, 내용, 날짜, ... 가져오기
-  const MAX_TITLE_LENGTH = 20;
-  const MAX_CONTENT_LENGTH = 140;
+const Content = () => { // userName?
+  const [data, setData] = useState("");
+  const {title, content, isMine} = data;
+  const {id} = useParams();
+  const navigate = useNavigate();
+
+  const callbackPost = {
+    getData: (data) => setData(data),
+  }
+  const callbackDelete = { // 얘 안됨
+    navigateSuccess: () => {
+      alert("게시물이 삭제되었습니다.");
+      navigate("/");
+    }
+  }
+  const deletePost = () => {
+    AxiosDelete(id, callbackDelete);
+  };
+  useEffect(() => {
+    AxiosPost(id, callbackPost);
+  }, []); // 처음 한 번만 실행
   return (
     <>
       <WritePostContainer>
         <TextBox>
-          {/*<form onSubmit={() => handleSubmit(onSubmit)}>*/}
-            <TitleBox>
-              <TitlePart>
-                <Title>제목 : {title}</Title>
-              </TitlePart>
-              <TitleLength>( 7 / 20 )</TitleLength>
-            </TitleBox>
-            <ContentBox>
-              <ContentArea>
-                {content}
-              </ContentArea><ContentLength>( 9 / 140 )</ContentLength>
-            </ContentBox>
-          {(userName === 'me') &&
+          <TitleBox>
+            <TitlePart>
+              <Title>제목 : {title}</Title>
+            </TitlePart>
+            <TitleLength>( {String(title).length} / 20 )</TitleLength>
+          </TitleBox>
+          <ContentBox>
+            <ContentArea>
+              {content}
+            </ContentArea><ContentLength>( {String(content).length} / 140 )</ContentLength>
+          </ContentBox>
+          {isMine &&
             <BottomBox>
               <InfoBox>※ 작성된 게시글은 수정이 불가합니다.</InfoBox>
-                <ButtonBox>
-                  <ContentButton type='true'>삭제하기</ContentButton>
-                </ButtonBox>
-            </BottomBox> }
-          {/*</form>*/}
+              <ButtonBox>
+                <ContentButton onBtn='true' clickPath={deletePost}>삭제하기</ContentButton>
+              </ButtonBox>
+            </BottomBox>}
         </TextBox>
       </WritePostContainer>
     </>
