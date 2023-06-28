@@ -6,10 +6,10 @@ export const AxiosJoin = (data, callbackFunction) => {
     id,
     password,
     email,
-    // 구조분해할당 + key랑 value가 동일 시 요약 가능
   })
     .then((res) => {
       callbackFunction();
+      console.log(res);
     })
 
     .catch((error) => {

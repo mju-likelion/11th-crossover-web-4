@@ -1,16 +1,29 @@
 import styled from 'styled-components';
 import Post from './Post';
 import ContentButton from '../../components/ContentButton';
-import { POST_DATA } from '../../assets/data/PostData';
 import { useNavigate } from 'react-router-dom';
+import { AxiosPosts } from '../../api/Posts';
+import { useEffect, useState } from 'react';
 const PostList = () => {
+  const [posts, setPosts] = useState([]);
   const navigate = useNavigate();
+
   const goWrite = () => {
     navigate('/write');
   };
+  useEffect(() => {
+    const fetchData = async () => {
+      const data = await AxiosPosts();
+      setPosts(data);
+    };
+    fetchData();
+  }, []);
+
   const goPost = (postId) => {
     navigate(`/${postId}`);
   };
+  console.log('posts입니다', posts);
+
   return (
     <AllContainer>
       <PostContainer>
@@ -22,12 +35,12 @@ const PostList = () => {
             clickPath={goWrite}
           />
         </WriteButtonWrapper>
-        {POST_DATA.map((postData, index) => (
+        {posts.map((postData, index) => (
           <Post
-            userName={postData.userName}
+            isMine={postData.isMine}
             title={postData.title}
             content={postData.content}
-            time={postData.time}
+            time={postData.updatedAt}
             key={index}
             onClick={() => goPost(postData.id)}
           />
