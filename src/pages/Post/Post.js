@@ -2,16 +2,13 @@ import MyProfile from '../../assets/images/profile.svg';
 import OtherProfile from '../../assets/images/profilenone.svg';
 import styled from 'styled-components';
 
-const Post = ({ userName, title, content, time, onClick }) => {
+const Post = ({ isMine, title, content, updatedAt, onClick }) => {
   return (
     <PostBox onClick={onClick}>
       <PostTop>
         <PostProfile>
-          {userName === 'me' && <ProfileImg src={MyProfile} alt="MyProfile" />}
-          {userName === 'other' && (
-            <ProfileImg src={OtherProfile} alt="OtherProfile" />
-          )}
-          {/* 또는 boolean값으로 삼항 연산자 사용 가능 (중첩 X) */}
+          {isMine && <ProfileImg src={MyProfile} alt="MyProfile" />}
+          {!isMine && <ProfileImg src={OtherProfile} alt="OtherProfile" />}
         </PostProfile>
         <PostTopRight>
           <PostTitle>제목: {title}</PostTitle>
@@ -20,7 +17,7 @@ const Post = ({ userName, title, content, time, onClick }) => {
           </PostContent>
         </PostTopRight>
       </PostTop>
-      <PostTime>{time}</PostTime>
+      <PostTime>{}</PostTime>
     </PostBox>
   );
 };
