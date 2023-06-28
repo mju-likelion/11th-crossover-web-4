@@ -1,15 +1,14 @@
 import {Axios} from "./Axios";
 
-export const AxiosDelete = (id, callbackFunctions) => {
-  const {navigateSuccess} = callbackFunctions;
+export const AxiosDelete = (id, callbackDelete) => {
+  const {navigateSuccess} = callbackDelete;
   const token = localStorage.getItem("token");
 
   Axios.delete(`api/posts/${id}`, {
     headers: {Authorization: `Bearer ${token}`}
   })
     .then((res) => {
-      console.log(res);
-      alert("게시물이 삭제되었습니다.");
+      console.log(res); // 얘 왜 안불러와지지?
       navigateSuccess();
     })
     .catch((error) => {

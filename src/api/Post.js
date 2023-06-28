@@ -1,7 +1,7 @@
 import {Axios} from "./Axios";
 
-export const AxiosPost = (id, callbackFunctions) => {
-  const {getData} = callbackFunctions;
+export const AxiosPost = (id, callbackPost) => {
+  const {getData} = callbackPost;
   const token = localStorage.getItem("token"); // 토큰값 읽기, String형태
 
   Axios.get(`/api/posts/${id}`, {
