@@ -5,8 +5,12 @@ import Logout from "../assets/images/logout icon.svg";
 import {useNavigate} from "react-router-dom";
 
 const Header = () => {
-  const [isLogin, setIsLogin] = useState(false);
   const navigate = useNavigate();
+  const isLogin = localStorage.getItem("token") ? true : false;
+  const isLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/login");
+  }
   const goList = () => {
     navigate(`/`);
   }
@@ -14,7 +18,7 @@ const Header = () => {
     <>
       <HeaderBar>
         <Logo src={Airplane} alt="logo" onClick={goList} />
-        {isLogin && <LogoutIcon src={Logout} alt="logout"/>}
+        {isLogin && <LogoutIcon onClick={isLogout} src={Logout} alt="logout"/>}
       </HeaderBar>
     </>
   );
