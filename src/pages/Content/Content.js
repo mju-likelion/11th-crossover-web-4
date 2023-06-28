@@ -1,4 +1,3 @@
-// import React, {useState} from 'react';
 import styled from "styled-components";
 import ContentButton from "../../components/ContentButton";
 import {useForm} from "react-hook-form";
@@ -44,7 +43,7 @@ const Content = ({ userName }) => { // userName?
             <BottomBox>
               <InfoBox>※ 작성된 게시글은 수정이 불가합니다.</InfoBox>
                 <ButtonBox>
-                  <ContentButton type='true'>삭제하기</ContentButton>
+                  <ContentButton type='true' onClick={deletePost}>삭제하기</ContentButton>
                 </ButtonBox>
             </BottomBox> }
           {/*</form>*/}
