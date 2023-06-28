@@ -2,10 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 // import {Theme} from "../styles/Theme";
 
-const ContentButton = ({ children, isactive, type, clickPath }) => {
+const ContentButton = ({ children, isactive, onBtn, clickPath }) => {
   return (
     <>
-      <Button type={type} isactive={isactive} onClick={clickPath}>
+      <Button
+        type="submit"
+        onBtn={onBtn}
+        isactive={isactive}
+        onClick={clickPath}
+      >
         {children}
       </Button>
     </>
@@ -21,8 +26,8 @@ const Button = styled.button`
   color: white;
   font-size: 21px;
   line-height: 44px;
-  background-color: ${({ type, theme, isactive }) =>
-    type === 'true'
+  background-color: ${({ onBtn, theme, isactive }) =>
+    onBtn === 'true'
       ? theme.colors.GRAY
       : isactive === 'true'
       ? theme.colors.BLUE2
