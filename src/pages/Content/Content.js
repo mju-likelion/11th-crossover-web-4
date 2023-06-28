@@ -46,7 +46,7 @@ const Content = () => { // userName?
             <BottomBox>
               <InfoBox>※ 작성된 게시글은 수정이 불가합니다.</InfoBox>
               <ButtonBox>
-                <ContentButton onBtn='true' onClick={deletePost}>삭제하기</ContentButton>
+                <ContentButton onBtn='true' clickPath={deletePost}>삭제하기</ContentButton>
               </ButtonBox>
             </BottomBox>}
         </TextBox>

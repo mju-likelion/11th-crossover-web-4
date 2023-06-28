@@ -8,7 +8,7 @@ export const AxiosDelete = (id, callbackDelete) => {
     headers: {Authorization: `Bearer ${token}`}
   })
     .then((res) => {
-      console.log(res); // 얘 왜 안불러와지지?
+      console.log(res);
       navigateSuccess();
     })
     .catch((error) => {
