@@ -4,7 +4,12 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router-dom';
 import { AxiosWrite } from '../../api/Posts';
 const WritePost = () => {
-  const { handleSubmit, register, watch } = useForm();
+  const { handleSubmit, register, watch } = useForm({
+    defaultValues: {
+      title: '',
+      content: '',
+    },
+  });
 
   const navigate = useNavigate();
   const value = watch();
