@@ -43,4 +43,5 @@ const LogoutIcon = styled.img`
   width: 29px;
   height: 29px;
   margin: 44px 363px 43px auto;
+  cursor: pointer;
 `;
