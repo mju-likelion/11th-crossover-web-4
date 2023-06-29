@@ -91,10 +91,7 @@ const Title = styled.div`
   font-size: 54px;
   font-weight: 600;
   margin-bottom: 65px;
-`;
-const Button = styled.div`
-  //margin-top: 58px;
-`
+`;ß
 
 const SignUpLink = styled.p`
   float: right;
