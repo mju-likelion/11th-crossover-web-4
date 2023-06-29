@@ -1,16 +1,18 @@
 import { Axios } from './Axios';
 
 // 전체 조회 api
-export const AxiosPosts = async () => {
+export const AxiosPosts = async (page) => {
   const token = localStorage.getItem('token');
   try {
     const response = await Axios.get('/api/posts', {
       headers: { Authorization: `Bearer ${token}` },
+      params: {
+        page: page,
+      },
     });
     return response.data;
   } catch (error) {
-    console.log(error);
-    return null;
+    return error.response.data.message.map((message) => alert(message));
   }
 };
 

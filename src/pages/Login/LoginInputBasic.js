@@ -15,7 +15,7 @@ const LoginInputBasic = ({
     <AllContainer>
       <BoxWrapper
         iserror={errors[name] ? 'true' : 'false'}
-        htmlFor={name} //react에서는 htmlFor로 id와 연결, 클릭 부분 확장
+        htmlFor={name} 
       >
         <InputBox>
           <SignInput
@@ -26,14 +26,13 @@ const LoginInputBasic = ({
             {...register(name)}
           />
           {errors[name] && <IsSuccessIcon src={errorIcon} alt="errorIcon" />}
-          {/* 중첩 삼항 연산자에서 변경! */}
 
           {inputValue[name] ? (
             <CancelIcon
               src={cancelIcon}
               alt="cancelIcon"
               onClick={() => {
-                setValue(name, ''); //어떤 값을, 뭐로 변경시킬지
+                setValue(name, '');
                 errors[name] = '';
               }}
             />

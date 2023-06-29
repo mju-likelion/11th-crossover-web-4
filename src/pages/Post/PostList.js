@@ -4,27 +4,77 @@ import ContentButton from '../../components/ContentButton';
 import { useNavigate } from 'react-router-dom';
 import { AxiosPosts } from '../../api/Posts';
 import { useEffect, useState } from 'react';
-const PostList = () => {
-  const [posts, setPosts] = useState([]);
-  const navigate = useNavigate();
 
-  const goWrite = () => {
-    navigate('/write');
-  };
+const PostList = () => {
+  const isToken = localStorage.getItem('token') ? true : false;
+  const [posts, setPosts] = useState([]);
+  const [page, setPage] = useState(1);
+
   useEffect(() => {
     const fetchData = async () => {
-      const data = await AxiosPosts();
-      setPosts(data);
+      const data = await AxiosPosts(page);
+      callbackFunctions.getDataSuccess(data);
+      callbackFunctions.setPageNumber();
     };
     fetchData();
   }, []);
 
+  // 인피니티 스크롤 로직
+  const callbackFunctions = {
+    getDataSuccess: (data) => {
+      setPosts((prev) => [...prev, ...data]);
+    },
+    setPageNumber: () => {
+      setPage((prev) => prev + 1);
+    },
+  };
+
+  useEffect(() => {
+    const handleScroll = async () => {
+      if (
+        window.innerHeight + Math.ceil(window.scrollY) >=
+        document.documentElement.scrollHeight
+      ) {
+        try {
+          console.log(
+            '스크롤 값',
+            window.innerHeight + Math.ceil(window.scrollY),
+            document.documentElement.scrollHeight
+          );
+          const data = await AxiosPosts(page); // then, catch로도 변환 가능
+          callbackFunctions.getDataSuccess(data);
+          callbackFunctions.setPageNumber();
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [page]);
+
+  // navigate 로직
   const goPost = (postId) => {
     navigate(`/${postId}`);
   };
-  console.log('posts입니다', posts);
+  const navigate = useNavigate();
+  const goWrite = () => {
+    navigate('/write');
+  };
 
-  return (
+  // time 로직
+  const timeChange = (updatedAt) => {
+    const currentTime = new Date();
+    const writeUpTime = new Date(updatedAt);
+    const timeInterval = currentTime.getTime() - writeUpTime.getTime();
+    if (timeInterval < 1000 * 60 * 60 * 24) {
+      return `${writeUpTime.getHours()}:${writeUpTime.getMinutes()}`;
+    } else {
+      return `${Math.floor(timeInterval / (1000 * 60 * 60 * 24))}일전`;
+    }
+  };
+
+  return isToken ? (
     <AllContainer>
       <PostContainer>
         <WriteButtonWrapper>
@@ -35,18 +85,21 @@ const PostList = () => {
             clickPath={goWrite}
           />
         </WriteButtonWrapper>
-        {posts.map((postData, index) => (
-          <Post
-            isMine={postData.isMine}
-            title={postData.title}
-            content={postData.content}
-            time={postData.updatedAt}
-            key={index}
-            onClick={() => goPost(postData.id)}
-          />
-        ))}
+        {posts &&
+          posts.map((postData, index) => (
+            <Post
+              isMine={postData.isMine}
+              title={postData.title}
+              content={postData.content}
+              time={timeChange(postData.updatedAt)}
+              key={index}
+              onClick={() => goPost(postData.id)}
+            />
+          ))}
       </PostContainer>
     </AllContainer>
+  ) : (
+    navigate('/login')
   );
 };
 const AllContainer = styled.div`
@@ -58,7 +111,6 @@ const PostContainer = styled.div`
   width: 783px;
   height: 100%;
   margin: auto;
-  /* 컨테이너의 width가 확보되어 margin이 유효할 수 있을 때 */
 `;
 const WriteButtonWrapper = styled.div`
   width: 100%;

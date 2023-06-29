@@ -1,32 +1,31 @@
-import styled from "styled-components";
-import ContentButton from "../../components/ContentButton";
-import {useEffect, useState} from "react";
-import {AxiosPost} from "../../api/Post";
-import {useNavigate, useParams} from "react-router-dom";
-import {AxiosDelete} from "../../api/Delete";
+import styled from 'styled-components';
+import ContentButton from '../../components/ContentButton';
+import { useEffect, useState } from 'react';
+import { AxiosPost } from '../../api/Post';
+import { useNavigate, useParams } from 'react-router-dom';
+import { AxiosDelete } from '../../api/Delete';
 
-
-const Content = () => { // userName?
-  const [data, setData] = useState("");
-  const {title, content, isMine} = data;
-  const {id} = useParams();
+const Content = () => {
+  const [data, setData] = useState('');
+  const { title, content, isMine } = data;
+  const { id } = useParams();
   const navigate = useNavigate();
 
   const callbackPost = {
     getData: (data) => setData(data),
-  }
-  const callbackDelete = { // 얘 안됨
+  };
+  const callbackDelete = {
     navigateSuccess: () => {
-      alert("게시물이 삭제되었습니다.");
-      navigate("/");
-    }
-  }
+      alert('게시물이 삭제되었습니다.');
+      navigate('/');
+    },
+  };
   const deletePost = () => {
     AxiosDelete(id, callbackDelete);
   };
   useEffect(() => {
     AxiosPost(id, callbackPost);
-  }, []); // 처음 한 번만 실행
+  }, []); 
   return (
     <>
       <WritePostContainer>
@@ -38,17 +37,19 @@ const Content = () => { // userName?
             <TitleLength>( {String(title).length} / 20 )</TitleLength>
           </TitleBox>
           <ContentBox>
-            <ContentArea>
-              {content}
-            </ContentArea><ContentLength>( {String(content).length} / 140 )</ContentLength>
+            <ContentArea>{content}</ContentArea>
+            <ContentLength>( {String(content).length} / 140 )</ContentLength>
           </ContentBox>
-          {isMine &&
+          {isMine && (
             <BottomBox>
               <InfoBox>※ 작성된 게시글은 수정이 불가합니다.</InfoBox>
               <ButtonBox>
-                <ContentButton onBtn='true' clickPath={deletePost}>삭제하기</ContentButton>
+                <ContentButton onBtn="true" clickPath={deletePost}>
+                  삭제하기
+                </ContentButton>
               </ButtonBox>
-            </BottomBox>}
+            </BottomBox>
+          )}
         </TextBox>
       </WritePostContainer>
     </>
@@ -57,42 +58,39 @@ const Content = () => { // userName?
 
 export default Content;
 
-// **주석 나중에 필요없는 거 지우기!**
 const WritePostContainer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
   justify-content: center;
   background-color: white;
-`
+`;
 const TextBox = styled.div`
   width: 794px;
   height: 1092px;
-`
+`;
 
 const TitleBox = styled.div`
   display: flex;
-  //justify-content: space-between;
-  //flex-wrap: nowrap;
   height: 134px;
   border-radius: 25px;
-  border: 2px solid ${({theme}) => theme.colors.GRAY};
+  border: 2px solid ${({ theme }) => theme.colors.GRAY};
   margin-top: 58px;
   padding: 55px 0 55px 35px;
-`
+`;
 
 const TitlePart = styled.div`
   display: flex;
   width: 631px;
   height: 24px;
-`
+`;
 
 const Title = styled.h3`
   height: 24px;
   font-weight: 600;
   font-size: 24px;
   line-height: 24px;
-`
+`;
 
 const TitleInput = styled.input`
   border: none;
@@ -101,30 +99,29 @@ const TitleInput = styled.input`
   font-weight: 600;
   line-height: 24px;
   padding-right: 19px;
-`
+`;
 
 const TitleLength = styled.div`
-  float: right; // 오른쪽에 정렬
-  // float 속성 대체해야함
-  color: ${({theme}) => theme.colors.GRAY};
+  float: right;
+  color: ${({ theme }) => theme.colors.GRAY};
   font-weight: 500;
   font-size: 20px;
   line-height: 28px;
   height: 24px;
   background-color: white;
   margin-right: 35px;
-`
+`;
 
 const ContentBox = styled.div`
   height: 733px;
   border-radius: 25px;
-  border: 2px solid ${({theme}) => theme.colors.GRAY};
+  border: 2px solid ${({ theme }) => theme.colors.GRAY};
   margin-top: 16px;
   padding: 35px;
-  color: ${({theme}) => theme.colors.GRAY};
-`
+  color: ${({ theme }) => theme.colors.GRAY};
+`;
 
-const ContentArea = styled.div` // 작성페이지에서는 textarea
+const ContentArea = styled.div`
   width: 714px;
   height: 627px;
   border: none;
@@ -132,32 +129,32 @@ const ContentArea = styled.div` // 작성페이지에서는 textarea
   font-size: 20px;
   line-height: 24px;
   color: black;
-`
+`;
 
 const ContentLength = styled.div`
   float: right;
   font-size: 20px;
   font-weight: 500;
   line-height: 24px;
-  color: ${({theme}) => theme.colors.GRAY};
+  color: ${({ theme }) => theme.colors.GRAY};
   margin-bottom: 53px;
-  margin-right: 10px; //ContentBox padding 값이랑 더해서 총 45px
-`
+  margin-right: 10px;
+`;
 
 const BottomBox = styled.div`
   width: 794px;
   height: 151px;
   padding: 16px 35px 16px 35px;
   margin-top: 16px;
-`
+`;
 
 const InfoBox = styled.div`
   width: 726px;
-  color: ${({theme}) => theme.colors.GRAY};
+  color: ${({ theme }) => theme.colors.GRAY};
   font-weight: 500;
   font-size: 20px;
   line-height: 28px;
-`
+`;
 
 const ButtonBox = styled.div`
   width: 233px;
@@ -165,4 +162,4 @@ const ButtonBox = styled.div`
   background: white;
   float: right;
   margin-top: 17px;
-`
+`;

@@ -1,12 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
-// import {Theme} from "../styles/Theme";
 
 const ContentButton = ({ children, isactive, onBtn, clickPath }) => {
   return (
     <>
       <Button
-        // type="submit"
         onBtn={onBtn}
         isactive={isactive}
         onClick={clickPath}
