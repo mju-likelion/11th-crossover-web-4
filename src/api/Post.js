@@ -9,7 +9,7 @@ export const AxiosPost = (id, callbackPost) => {
   })
     .then((res) => {
       console.log(res);
-      getData(res.data); // 성공 시에 데이터 받음.
+      getData(res.data);
     })
     .catch((error) => {
       console.log(error);
