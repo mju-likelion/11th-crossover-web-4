@@ -56,7 +56,7 @@ const WritePost = () => {
               <InfoBox>※ 작성된 게시글은 수정이 불가합니다.</InfoBox>
               <ButtonBox>
                 <ContentButton
-                  onBtn="false"
+                  btntype="false"
                   isactive={value.title && value.content ? 'true' : 'false'}
                 >
                   작성하기

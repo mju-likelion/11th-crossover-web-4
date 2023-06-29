@@ -81,7 +81,7 @@ const PostList = () => {
           <ContentButton
             children="작성하기"
             isactive="true"
-            type="false"
+            btntype="false"
             clickPath={goWrite}
           />
         </WriteButtonWrapper>
