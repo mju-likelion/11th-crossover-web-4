@@ -2,7 +2,7 @@ import MyProfile from '../../assets/images/profile.svg';
 import OtherProfile from '../../assets/images/profilenone.svg';
 import styled from 'styled-components';
 
-const Post = ({ isMine, title, content, updatedAt, onClick }) => {
+const Post = ({ isMine, title, content, time, onClick }) => {
   return (
     <PostBox onClick={onClick}>
       <PostTop>
@@ -17,7 +17,7 @@ const Post = ({ isMine, title, content, updatedAt, onClick }) => {
           </PostContent>
         </PostTopRight>
       </PostTop>
-      <PostTime>{}</PostTime>
+      <PostTime>{time}</PostTime>
     </PostBox>
   );
 };
