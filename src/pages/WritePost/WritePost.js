@@ -15,7 +15,6 @@ const WritePost = () => {
   const value = watch();
 
   const onSubmit = () => {
-    // console.log(value);
     AxiosWrite({ title: value.title, content: value.content }, goList);
   };
 
@@ -32,7 +31,7 @@ const WritePost = () => {
       <WritePostContainer>
         <TextBox>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <TitleBox>
+            <TitleBox htmlFor="title">
               <TitlePart>
                 <Title>제목 : </Title>
                 <TitleInput
@@ -85,7 +84,7 @@ const TextBox = styled.div`
   height: 1092px;
 `;
 
-const TitleBox = styled.div`
+const TitleBox = styled.label`
   display: flex;
   height: 134px;
   border-radius: 25px;

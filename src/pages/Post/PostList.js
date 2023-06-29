@@ -30,18 +30,20 @@ const PostList = () => {
   };
 
   useEffect(() => {
-    const handleScroll = () => {
+    const handleScroll = async () => {
       if (
         window.innerHeight + window.scrollY >=
         document.documentElement.scrollHeight
       ) {
-        AxiosPosts(page).then((data) => {
+        try {
+          const data = await AxiosPosts(page); // then, catch로도 변환 가능
           callbackFunctions.getDataSuccess(data);
           callbackFunctions.setPageNumber();
-        });
+        } catch (error) {
+          console.log(error);
+        }
       }
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, [page]);

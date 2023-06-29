@@ -6,7 +6,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { AxiosDelete } from '../../api/Delete';
 
 const Content = () => {
-  // userName?
   const [data, setData] = useState('');
   const { title, content, isMine } = data;
   const { id } = useParams();
@@ -16,7 +15,6 @@ const Content = () => {
     getData: (data) => setData(data),
   };
   const callbackDelete = {
-    // 얘 안됨
     navigateSuccess: () => {
       alert('게시물이 삭제되었습니다.');
       navigate('/');
@@ -27,7 +25,7 @@ const Content = () => {
   };
   useEffect(() => {
     AxiosPost(id, callbackPost);
-  }, []); // 처음 한 번만 실행
+  }, []); 
   return (
     <>
       <WritePostContainer>
