@@ -53,7 +53,6 @@ const SignInputBasic = ({
         {!errors[name] && !inputValue[name] && (
           <HelperText>{helperText}</HelperText>
         )}
-        {/* 중첩 삼항 연산자에서 변경 */}
       </AllContainer>
     </>
   );
