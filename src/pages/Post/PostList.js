@@ -36,11 +36,6 @@ const PostList = () => {
         document.documentElement.scrollHeight
       ) {
         try {
-          console.log(
-            '스크롤 값',
-            window.innerHeight + Math.ceil(window.scrollY),
-            document.documentElement.scrollHeight
-          );
           const data = await AxiosPosts(page); // then, catch로도 변환 가능
           callbackFunctions.getDataSuccess(data);
           callbackFunctions.setPageNumber();
