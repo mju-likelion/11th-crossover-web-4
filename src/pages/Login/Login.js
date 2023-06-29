@@ -1,17 +1,18 @@
 import styled from "styled-components";
 import NextButton from "../../components/NextButton";
-import { useForm } from "react-hook-form";
-import { yupResolver } from "@hookform/resolvers/yup";
+import {useForm} from "react-hook-form";
+import {yupResolver} from "@hookform/resolvers/yup";
 import LoginInputBasic from "./LoginInputBasic";
-import { useNavigate } from "react-router-dom";
-import { validation } from "./Validation";
+import {useNavigate} from "react-router-dom";
+import {validation} from "./Validation";
 import {AxiosLogin} from "../../api/Login";
+
 const Login = () => {
-  const navigate= useNavigate();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: {errors},
     watch,
     setValue,
   } = useForm({
@@ -24,7 +25,7 @@ const Login = () => {
   }
 
   const callbackFunctions = {
-    navigateSuccess : ()=> navigate('/')
+    navigateSuccess: () => navigate('/')
   };
   const onSubmit = (data) => {
     AxiosLogin(data, callbackFunctions);
@@ -43,7 +44,7 @@ const Login = () => {
             errors={errors}
             setValue={setValue}
             inputValue={inputValue}
-            />
+          />
           <LoginInputBasic
             name="password"
             placeholder="비밀번호"
@@ -52,19 +53,17 @@ const Login = () => {
             errors={errors}
             setValue={setValue}
             inputValue={inputValue}
-            />
+          />
         </InputContainer>
-        <Button>
-          {inputValue.id && inputValue.password ? (
-            <NextButton
-              type="submit"
+        {inputValue.id && inputValue.password ? (
+          <NextButton
+            type="submit"
             children="로그인"
             isfull="true"
-            ></NextButton>
-            ) : (
-            <NextButton type="submit" children="로그인"></NextButton>
-            )}
-        </Button>
+          ></NextButton>
+        ) : (
+          <NextButton type="submit" children="로그인"></NextButton>
+        )}
       </AllContainer>
       <SignUpLink onClick={goSignUp}>회원가입</SignUpLink>
     </>
@@ -91,7 +90,7 @@ const Title = styled.div`
   font-size: 54px;
   font-weight: 600;
   margin-bottom: 65px;
-`;ß
+`;
 
 const SignUpLink = styled.p`
   float: right;

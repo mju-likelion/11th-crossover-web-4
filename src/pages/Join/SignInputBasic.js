@@ -57,7 +57,7 @@ const SignInputBasic = ({
     </>
   );
 };
-const AllContainer = styled.form`
+const AllContainer = styled.div`
   width: 540px;
   height: 124px;
   display: flex;
