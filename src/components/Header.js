@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import Airplane from '../assets/images/airplaneIcon.svg';
-import Logout from '../assets/images/logout icon.svg';
+import LogoutImage from '../assets/images/logout icon.svg';
 import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const navigate = useNavigate();
   const isLogin = localStorage.getItem('token') ? true : false;
-  const isLogout = () => {
+  const Logout = () => {
     localStorage.removeItem('token');
     navigate('/login');
   };
@@ -17,7 +17,9 @@ const Header = () => {
     <>
       <HeaderBar>
         <Logo src={Airplane} alt="logo" onClick={goList} />
-        {isLogin && <LogoutIcon onClick={isLogout} src={Logout} alt="logout" />}
+        {isLogin && (
+          <LogoutIcon onClick={Logout} src={LogoutImage} alt="logout" />
+        )}
       </HeaderBar>
     </>
   );
